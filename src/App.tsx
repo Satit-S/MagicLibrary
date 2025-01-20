@@ -15,13 +15,11 @@ const App: React.FC = () => {
         <div className="flex justify-left items-left auto"> <img src={ML} alt="Logo" className="w-1/3 h-auto rounded shadow-lg" />
          </div>
          <br></br>
-          <Router>
             <Routes>
               <Route path="/" element={<BookSearch />} />
               <Route path="/book/:id" element={<BookDetail />} />
               <Route path="/saved-list" element={<SavedList />} />
             </Routes>
-          </Router>
         </div>
       </div>
     </ErrorBoundary>
