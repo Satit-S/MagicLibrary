@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 interface Book {
   title: string;
   author: string;
+  checked: boolean
 }
 
 const SavedList: React.FC = () => {
@@ -16,6 +17,14 @@ const SavedList: React.FC = () => {
 
   const handleRemoveBook = (index: number) => {
     const updatedBooks = savedBooks.filter((_, i) => i !== index);
+    setSavedBooks(updatedBooks);
+    localStorage.setItem('savedBooks', JSON.stringify(updatedBooks));
+  };
+
+  const handleToggleChecked = (index: number) => {
+    const updatedBooks = savedBooks.map((book, i) =>
+      i === index ? { ...book, checked: !book.checked } : book
+    );
     setSavedBooks(updatedBooks);
     localStorage.setItem('savedBooks', JSON.stringify(updatedBooks));
   };
@@ -39,6 +48,8 @@ const SavedList: React.FC = () => {
               <input
                 type="checkbox"
                 className="form-checkbox h-5 w-5 text-blue-600"
+                checked={book.checked}
+                onChange={() => handleToggleChecked(index)}
               />
               <span className="ml-4 antialiased">
                 <span className="font-medium uppercase">{book.title}</span> by{' '}
