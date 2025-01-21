@@ -20,20 +20,20 @@ interface Book {
 
 const BookCard: React.FC<Book> = ({ id, volumeInfo, handleRateFeedback}) => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow flex">
+    <div className="bg-white p-6 rounded-lg shadow flex flex-col md:flex-row">
       {volumeInfo.imageLinks?.thumbnail && (
         <img
           src={volumeInfo.imageLinks.thumbnail}
           alt={volumeInfo.title}
-          className="w-1/3 h-auto object-cover rounded"
+          className="w-full md:w-1/3 h-auto object-cover rounded"
         />
       )}
-      <div className="w-2/3 pl-4">
+      <div className="w-full md:w-2/3 pl-4">
         <h2 className="text-xl font-bold">{volumeInfo.title}</h2>
         <p><strong>Author(s):</strong> {volumeInfo.authors?.join(', ') || 'Unknown'}</p>
         <p className="text-gray-600">{volumeInfo.description?.substring(0, 100) || 'No description available'}...</p>
         <p><strong>Rating:</strong> {volumeInfo.averageRating} / 5</p>
-        <div>
+        <div className="flex items-center space-x-2 mt-2">
           <label>Feedback: </label>
           <button
             className="text-3xl bg-green-600 text-white p-2 rounded-l-full focus:outline-none hover:bg-green-700"

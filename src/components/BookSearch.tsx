@@ -131,7 +131,7 @@ const getUserRatings = () => {
       <div className="bg-slate-50/50 bg-clip-border shadow rounded">
         <div className="container mx-auto p-6 rounded">
           <h1 className="text-3xl font-bold">Book Recommendation System</h1>
-          <div className="mt-4 flex space-x-4">
+          <div className="mt-4 flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
             <input
               className="border border-gray-300/50 p-2 rounded w-full"
               type="text"
@@ -155,7 +155,7 @@ const getUserRatings = () => {
       <div className="container mx-auto p-6">
         <h2 className="text-2xl font-bold">Suggestions for You</h2>
         {getSuggestionsForYou().length > 0 ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 h-m-65">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {getSuggestionsForYou().map((book) => (
               <BookCard key={book.id} {...book} handleRateFeedback={handleRateFeedback} handleAddToList={handleAddToList} />
             ))}
@@ -166,7 +166,7 @@ const getUserRatings = () => {
 
         <h2 className="text-2xl font-bold mt-6">More Recommendations</h2>
         {books.length > 0 ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 h-m-65">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {books.filter(book => book.userFeedback !== 'dislike').map((book, index) => (
               <BookCard key={`${book.id}-${index}`} {...book} handleRateFeedback={handleRateFeedback} handleAddToList={handleAddToList}/>
             ))}
